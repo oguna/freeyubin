@@ -25,8 +25,8 @@ jsmigemoと同様の辞書構造を用いることでデータサイズの削減
    「都道府県一覧」の「全国一括」をクリックすると、「ken_all.zip」を入手できます。
 2. 「ken_all.zip」中の「KEN_ALL.CSV」ファイルをプロジェクト直下に展開します。
 3. 「KEN_ALL.CSV」をメモ帳などのテキストエディタで開き、文字エンコーディングをUTF-8で保存します。
-4. `node .\bin\freeyubin-tool.js` で、CMigemo形式に変換します。
-5. `node .\bin\freeyubin-dict.js a.txt freeyubin-dict` で、省メモリMigemo形式に変換します。
+4. `node .\bin\freeyubin-tool.mjs` で、CMigemo形式に変換します。
+5. `node .\bin\freeyubin-dict.mjs a.txt freeyubin-dict` で、省メモリMigemo形式に変換します。
 
 `freeyubin-dict` が、生成した辞書ファイルです。
 
@@ -35,19 +35,20 @@ jsmigemoと同様の辞書構造を用いることでデータサイズの削減
 ### Node.js
 
 ```shell
-> node bin/freeyubin-cli.js 5650871
+> node bin/freeyubin-cli.mjs 5650871
 大阪府 吹田市 山田丘
 ```
 
 ### ウェブ
 
 ```js
-let url = 'freeyubin-dict-20200430'
-axios.get( url, {responseType: 'arraybuffer'})
-.then(response => {
-    let dict = new freeyubin.CompactDictionary(response.data)
-    let iter = dict.search('5650871')
-    let address = iter.next().value
+const url = 'freeyubin-dict'
+fetch(url)
+.then(e => e.arraybuffer())
+.then(e => {
+    const dict = new freeyubin.CompactDictionary(e)
+    const iter = dict.search('5650871')
+    const address = iter.next().value
     console.log(address)
 })
 ```

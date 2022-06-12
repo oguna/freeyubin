@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "types": "lib/index.d.ts",
-  "bin": "bin/freeyubin-cli.js",
+  "bin": "bin/freeyubin-cli.mjs",
   "scripts": {
     "prepare": "npm run build && npm run dist",
     "build": "tsc",
