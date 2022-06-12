@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 
-let filename = "data/KEN_ALL.CSV"
+let filename = "KEN_ALL.CSV"
 let rs = fs.createReadStream(filename, 'utf8');
 let rl = readline.createInterface(rs, {});
 let dict = new Map();

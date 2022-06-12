@@ -19,6 +19,17 @@ jsmigemoと同様の辞書構造を用いることでデータサイズの削減
 - CIにより辞書ファイルを自動的に更新
 - 住所から郵便番号を検索
 
+## 辞書ファイルの生成方法
+
+1. [郵便局のウェブサイト](https://www.post.japanpost.jp/zipcode/dl/kogaki-zip.html)から、最新の郵便番号データをダウンロードして下さい。
+   「都道府県一覧」の「全国一括」をクリックすると、「ken_all.zip」を入手できます。
+2. 「ken_all.zip」中の「KEN_ALL.CSV」ファイルをプロジェクト直下に展開します。
+3. 「KEN_ALL.CSV」をメモ帳などのテキストエディタで開き、文字エンコーディングをUTF-8で保存します。
+4. `node .\bin\freeyubin-tool.js` で、CMigemo形式に変換します。
+5. `node .\bin\freeyubin-dict.js a.txt freeyubin-dict` で、省メモリMigemo形式に変換します。
+
+`freeyubin-dict` が、生成した辞書ファイルです。
+
 ## 使い方
 
 ### Node.js
