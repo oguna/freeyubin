@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 
-const filename = "freeyubin-dict-20200430"
+const filename = "freeyubin-dict-20220531"
 let buffer = fs.readFileSync(filename);
 let ab = new ArrayBuffer(buffer.length);
 let view = new Uint8Array(ab);

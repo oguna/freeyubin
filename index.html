@@ -1,63 +1,69 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>FreeYubin</title>
 </head>
+
 <body>
   <div id="app">
-      <p>テキストボックスに郵便番号を7桁の数字で入力し、検索ボタンを押してください</p>
-      <input v-model="postcode" placeholder="postcode">
-      <button v-on:click="search">検索</button>
-      <table>
-          <tr>
-              <th>都道府県</th>
-              <td>{{todofuken}}</td>
-          </tr>
-          <tr>
-              <th>市区町村</th>
-              <td>{{sichoson}}</td>
-          </tr>
-          <tr>
-              <th>町域</th>
-              <td>{{choiki}}</td>
-          </tr>
-      </table>
+    <h1>FreeYubin</h1>
+    <p>テキストボックスに郵便番号を7桁の数字で入力し、検索ボタンを押してください</p>
+    <input v-model="postcode" placeholder="postcode">
+    <button v-on:click="search">検索</button>
+    <table>
+      <tr>
+        <th>都道府県</th>
+        <td>{{todofuken}}</td>
+      </tr>
+      <tr>
+        <th>市区町村</th>
+        <td>{{sichoson}}</td>
+      </tr>
+      <tr>
+        <th>町域</th>
+        <td>{{choiki}}</td>
+      </tr>
+    </table>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3"></script>
   <script src="dist/freeyubin.js"></script>
   <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
+    const { createApp } = Vue
+    createApp({
+      data() {
+        return {
           postcode: '',
           todofuken: '',
           sichoson: '',
           choiki: '',
           dict: null,
+        }
       },
       methods: {
-          search: function() {
-            let iter = this.dict.search(this.postcode)
-            let address = iter.next().value
-            if (address !== undefined) {
-                let columns = address.split(' ')
-                this.todofuken = columns[0]
-                this.sichoson = columns[1]
-                this.choiki = columns[2]
-            } else {
-                this.todofuken = ''
-                this.sichoson = ''
-                this.choiki = ''
-            }
+        search: function () {
+          const iter = this.dict.search(this.postcode)
+          const address = iter.next().value
+          if (address !== undefined) {
+            const columns = address.split(' ')
+            this.todofuken = columns[0]
+            this.sichoson = columns[1]
+            this.choiki = columns[2]
+          } else {
+            this.todofuken = ''
+            this.sichoson = ''
+            this.choiki = ''
           }
+        }
       },
       mounted() {
-          let url = 'freeyubin-dict-20200430'
-          axios.get( url, {responseType: 'arraybuffer'})
-          .then(response => (this.dict = new freeyubin.CompactDictionary(response.data)))
+        const url = 'freeyubin-dict-20220531'
+        fetch(url)
+          .then(e => e.arrayBuffer())
+          .then(e => this.dict = new freeyubin.CompactDictionary(e))
       }
-    })
+    }).mount('#app')
   </script>
 </body>
+
 </html>
