@@ -8,7 +8,7 @@ const dict = new Map();
 rl.on('line', (line) => {
     if (line.length > 0) {
         const columns = line.split(',')
-        const postcode = columns[2].substr(1, columns[2].length - 2)
+        const postcode = columns[2].substring(1, -2)
         const address = (columns[6] + " " + columns[7] + " " + columns[8]).replace(/"/gi, "")
         dict.set(postcode, address)
     }
