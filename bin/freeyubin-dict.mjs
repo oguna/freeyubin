@@ -3,7 +3,7 @@
 * jsmigemo-cli.js
 */
 
-import {CompactDictionaryBuilder} from '../lib/CompactDictionaryBuilder.js'
+import { CompactDictionaryBuilder } from '../dist/freeyubin.mjs'
 import fs from 'fs';
 import readline from 'readline';
 

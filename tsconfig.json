@@ -1,8 +1,9 @@
 {
 	"compilerOptions": {
-		"target": "es6",
-		"module": "commonjs",
+		"target": "es2018",
+		"module": "esnext",
 		"declaration": true,
+		"declarationMap": true,
 		"outDir": "lib",
 		"strict": true,
 		"sourceMap": true
