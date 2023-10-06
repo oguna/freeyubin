@@ -7,8 +7,8 @@
 ## 実用的？
 
 jsmigemoと同様の辞書構造を用いることでデータサイズの削減を図りましたが、実は全然小さくなっていません。
-本ツールで用いている、郵便番号から住所に変換するだけの辞書が **1.37MB** です。
-郵便局のウェブサイトで配布しているCSVファイルがZIP圧縮で **1.61MB** です。
+本ツールで用いている、郵便番号から住所に変換するだけの辞書が **1.39MB** です。
+郵便局のウェブサイトで配布しているCSVファイルがZIP圧縮で **1.94MB** です。
 
 よって現段階では全く実用的ではありません。
 
@@ -21,12 +21,11 @@ jsmigemoと同様の辞書構造を用いることでデータサイズの削減
 
 ## 辞書ファイルの生成方法
 
-1. [郵便局のウェブサイト](https://www.post.japanpost.jp/zipcode/dl/kogaki-zip.html)から、最新の郵便番号データをダウンロードして下さい。
-   「都道府県一覧」の「全国一括」をクリックすると、「ken_all.zip」を入手できます。
-2. 「ken_all.zip」中の「KEN_ALL.CSV」ファイルをプロジェクト直下に展開します。
-3. 「KEN_ALL.CSV」をメモ帳などのテキストエディタで開き、文字エンコーディングをUTF-8で保存します。
-4. `node .\bin\freeyubin-tool.mjs` で、CMigemo形式に変換します。
-5. `node .\bin\freeyubin-dict.mjs a.txt freeyubin-dict` で、省メモリMigemo形式に変換します。
+1. [郵便局のウェブサイト](https://www.post.japanpost.jp/zipcode/dl/utf-zip.html)から、最新の郵便番号データをダウンロードして下さい。
+   「最新データのダウンロード」の「最新データのダウンロード」をクリックすると、「utf_all.zip」を入手できます。
+2. 「utf_all.zip」中の「UTF_ALL.CSV」ファイルをプロジェクト直下に展開します。
+3. `node .\bin\freeyubin-tool.mjs` で、CMigemo形式に変換します。
+4. `node .\bin\freeyubin-dict.mjs a.txt freeyubin-dict` で、省メモリMigemo形式に変換します。
 
 `freeyubin-dict` が、生成した辞書ファイルです。
 

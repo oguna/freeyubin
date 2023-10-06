@@ -2,7 +2,7 @@ import { CompactDictionary } from "../src/CompactDictionary";
 import { readFileSync } from "fs";
 
 describe("freeyubin", () => {
-    const buff = readFileSync('freeyubin-dict-20220531');
+    const buff = readFileSync('freeyubin-dict-20230929');
     const dict = new CompactDictionary(buff.buffer);
 
     it("5650871", () => {

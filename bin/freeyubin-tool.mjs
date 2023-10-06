@@ -1,7 +1,7 @@
 import fs from 'fs';
 import readline from 'readline';
 
-const filename = "KEN_ALL.CSV"
+const filename = "UTF_ALL.CSV"
 const rs = fs.createReadStream(filename, 'utf8');
 const rl = readline.createInterface(rs, {});
 const dict = new Map();
